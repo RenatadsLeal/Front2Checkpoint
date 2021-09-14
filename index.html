@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <title>Quadro de inspirações</title>
+</head>
+
+<body>
+    <header>
+        <div id="brand">
+            <h1 id="card">C</h1>
+            <h1>ard</h1>
+            <h1 id="stock">S</h1>
+            <h1>tock</h1>
+        </div>
+
+        <h2 id="subtitle">{Seu quadro de inspirações}</h2>
+        <div class="divBtnsHeader">
+        <button id="btnFavoriteIcon" class="btnHeader" ><img src="https://image.flaticon.com/icons/png/512/1077/1077035.png" class="favoriteIcon" alt="Favorites"> <p class="btnText">Favoritos</p> </button>
+        <button id="btnDarkMode" class="btnHeader" ><img src="https://image.flaticon.com/icons/png/512/1415/1415431.png" class="darkModeIcon" alt="Dark Mode/LightMode"> <p class="btnText">Dark Mode</p> </button>
+        </div>
+    </header>
+    <main>
+        <div id="cards">
+        </div>
+
+        <img src="./imgs/plus.png" id="btnAddCard" alt="Adicionar">
+
+        <div id="extraDivFormImgs" style="display: none;">
+            <div id="formImgs">
+                <form id="formAddCard">
+                    <img src="https://image.flaticon.com/icons/png/512/864/864393.png" id="btnCloseForm" alt="Botão de Fechar o form">
+                    <fieldset>
+                        <legend>Inspirações</legend>
+                        
+                        <div id="inputsFormAddCard">
+                            <label for="title">Título</label>
+                            <input type="text" name="title" id="titleForm" placeholder="Insira um título">
+
+                            <label for="picture">Foto</label>
+                            <input type="text" name="picture" id="pictureForm" placeholder="Link da foto">
+
+                            <label for="description">Descrição</label>
+                            <input type="text" name="description" id="descriptionForm"
+                                placeholder="Escreva uma breve descrição">
+                        </div>
+
+                        <div id="divBtnFormAddCard">
+                            <button type="submit" id="submitFormAddCard">Adicionar</button>
+                            <button type="reset" id="resetFormAddCard">Limpar</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <button id="btnOpenContact"><img
+            src="https://image.flaticon.com/icons/png/512/546/546394.png" id="btnContact" class="btnOp" alt="">
+            <p class="btnText">Fale conosco</p>
+        </button>
+        <div id="extraDivContact" style="display: none;">
+            <div class="form-popup" id="contact">
+                <form class="form-container">
+                    <h2>Fale conosco</h2>
+
+                    <label for="name"><b>Nome</b></label>
+                    <input type="text" placeholder="Insira seu nome" name="name" required>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Insira seu email" name="email" required>
+
+                    <label for="message"><b>Mensagem</b></label>
+                    <textarea placeholder="Escreva sua mensagem" name="message" cols="20" rows="5" required></textarea>
+
+                    <button type="submit" class="btn">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        <button id="btnOpenTeam"><img
+            src="https://image.flaticon.com/icons/png/512/2058/2058768.png" id="btnTeam" class="btnOp" alt="">
+            <p class="btnText">Equipe</p>
+        </button>
+        <div id="extraDivTeam" style="display: none;">
+            <div class="form-popup2" id="team">
+                <div class="form-container2">
+                    <h2>Equipe</h2>
+
+                    <ul>
+                        <li>Ailla Freire</li>
+                        <li>Carolina Hakamada</li>
+                        <li>Dominic Lourenço</li>
+                        <li>Helena Perdigueiro</li>
+                        <li class="Owner">Renata Leal</li>
+                        <li>Ruthiane Teixeira</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
