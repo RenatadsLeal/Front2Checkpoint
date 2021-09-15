@@ -511,12 +511,13 @@ footer {
 
   .btnHeader {
     width: 3rem;
-    background: rgb(150, 150, 150);
+    /* background: rgb(150, 150, 150); */
   }
 
   #btnOpenContact,  #btnOpenTeam {
     width: 12rem;
-    background: #222222;   
+    background: #222222;
+    border-radius: 0.5rem 
   }
 
   #extraDivFormImgs {
