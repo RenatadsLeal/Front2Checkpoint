@@ -105,7 +105,7 @@ submitForm.addEventListener("click", function () {
     card.appendChild(divBtnDeletePic);
 
     let btnDeletePic = document.createElement("img");
-    btnDeletePic.setAttribute("src", "./imgs/cancel2.png");
+    btnDeletePic.setAttribute("src", "./imgs/closeSub.png");
     btnDeletePic.setAttribute("class", "btnDeletePic");
     divBtnDeletePic.appendChild(btnDeletePic);
     btnDeletePic.addEventListener("click", function () { card.remove() });
