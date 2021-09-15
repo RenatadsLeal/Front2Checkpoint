@@ -1,3 +1,4 @@
+// Chamando elementos
 let body = document.querySelector("body");
 let header = document.querySelector("header");
 let footer = document.querySelector("footer");
@@ -18,29 +19,33 @@ let btnTeam = document.getElementById("btnTeam")
 let favoriteIcon = document.querySelector(".favoriteIcon")
 let darkMode = document.getElementById("btnDarkMode")
 let darkModeIcon = document.querySelector(".darkModeIcon")
+let btnText = document.getElementById("btnText")
 
-darkMode.onclick = function() {
-  // Obtains an array of all <link>
-  // elements.
-  // Select your element using indexing.
+let btnFavoriteIcon = document.getElementById("btnFavoriteIcon")
+
+// Função para alternar entre os temas Dark Mode e Light Mode
+darkMode.onclick = function () {
   let theme = document.getElementsByTagName('link')[0];
   if (theme.getAttribute('href') == './css/style.css') {
-      theme.setAttribute('href', './css/styleDarkMode.css');
-      darkModeIcon.setAttribute("src", "./imgs/sun.png");
-      favoriteIcon.setAttribute("src", "./imgs/heart2.png");
-      btnOpenForm.setAttribute("src", "./imgs/plusDarkMode.png");
-      btnContact.setAttribute("src", "./imgs/btnContDarkMode.png");
-      btnTeam.setAttribute("src", "./imgs/btnTeamDarkMode.png");
-      btnCloseForm.setAttribute("src", "./imgs/btnCloseForm.png");
+    theme.setAttribute('href', './css/styleDarkMode.css');
+    darkModeIcon.setAttribute("src", "./imgs/sun.png");
+    favoriteIcon.setAttribute("src", "./imgs/heart2.png");
+    btnOpenForm.setAttribute("src", "./imgs/plusDarkMode.png");
+    btnContact.setAttribute("src", "./imgs/btnContDarkMode.png");
+    btnTeam.setAttribute("src", "./imgs/btnTeamDarkMode.png");
+    btnCloseForm.setAttribute("src", "./imgs/btnCloseForm.png");
+    btnText.innerHTML = "Light Mode"
+
 
   } else {
-      theme.setAttribute('href', './css/style.css');
-      darkModeIcon.setAttribute("src", "https://image.flaticon.com/icons/png/512/1415/1415431.png");
-      favoriteIcon.setAttribute("src", "https://image.flaticon.com/icons/png/512/1077/1077035.png");
-      btnOpenForm.setAttribute("src", "./imgs/plus.png");
-      btnContact.setAttribute("src", "https://image.flaticon.com/icons/png/512/481/481659.png");
-      btnTeam.setAttribute("src", "https://image.flaticon.com/icons/png/512/2058/2058768.png");
-      btnCloseForm.setAttribute("src", "https://image.flaticon.com/icons/png/512/864/864393.png");
+    theme.setAttribute('href', './css/style.css');
+    darkModeIcon.setAttribute("src", "https://image.flaticon.com/icons/png/512/1415/1415431.png");
+    favoriteIcon.setAttribute("src", "https://image.flaticon.com/icons/png/512/1077/1077035.png");
+    btnOpenForm.setAttribute("src", "./imgs/plus.png");
+    btnContact.setAttribute("src", "https://image.flaticon.com/icons/png/512/481/481659.png");
+    btnTeam.setAttribute("src", "https://image.flaticon.com/icons/png/512/2058/2058768.png");
+    btnCloseForm.setAttribute("src", "https://image.flaticon.com/icons/png/512/864/864393.png");
+    btnText.innerHTML = "Dark Mode"
   }
 }
 
@@ -54,7 +59,9 @@ let btnOpenContact = document.getElementById("btnOpenContact");
 let extraDivTeam = document.getElementById("extraDivTeam");
 let btnOpenTeam = document.getElementById("btnOpenTeam");
 
-btnOpenForm.onclick = function() {
+
+// Fechando e abrindo o Form para inserir cards
+btnOpenForm.onclick = function () {
   if (extraDivFormImgs.style.display == "none") {
     extraDivFormImgs.style.display = "block";
   } else {
@@ -62,26 +69,26 @@ btnOpenForm.onclick = function() {
   }
 }
 
-btnCloseForm.onclick = function() {
+btnCloseForm.onclick = function () {
   extraDivFormImgs.style.display = "none";
 }
 
+// Função e validação para adicionar os cards
 submitForm.addEventListener("click", function () {
   if ((titleForm.value == "") || (pictureForm.value == "") || (descriptionForm.value == "")) {
     titleForm.focus();
 
-    // document.querySelectorAll("input").forEach((item) => item.value = "");
+    document.querySelectorAll("input").forEach((item) => item.value = "");
 
-    // alert("Por favor, preencha os 3 campos!");
+    alert("Por favor, preencha os 3 campos!");
 
-    titleForm.value = "Filhote de Labrador";
-    pictureForm.value = "https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg";
-    descriptionForm.value = "Lorem ipsum, dolor sit amet";
   } else {
     cards.style.height = "auto";
 
+    // Criação dos cards após a validação
     let card = document.createElement("div");
-    card.setAttribute("class", "card");
+    card.setAttribute("class", "card notFavCard");
+    card.setAttribute("style", "display: inline-block");
     cards.appendChild(card);
 
     let cardContent = document.createElement("div");
@@ -92,54 +99,80 @@ submitForm.addEventListener("click", function () {
     cardContent.innerHTML += `<img src="${pictureForm.value}" class="cardPicture">`;
     cardContent.innerHTML += `<h4 class="cardDescription">${descriptionForm.value}</h4>`;
 
+    // Adicionando o botão de deletar o card
     let divBtnDeletePic = document.createElement("div");
     divBtnDeletePic.setAttribute("class", "divBtnDeletePic");
     card.appendChild(divBtnDeletePic);
 
     let btnDeletePic = document.createElement("img");
-    btnDeletePic.setAttribute("src", "https://image.flaticon.com/icons/png/512/864/864393.png");
+    btnDeletePic.setAttribute("src", "./imgs/cancel2.png");
     btnDeletePic.setAttribute("class", "btnDeletePic");
     divBtnDeletePic.appendChild(btnDeletePic);
     btnDeletePic.addEventListener("click", function () { card.remove() });
 
-    // let divFavorite = document.createElement("div")
-    // divFavorite.setAttribute("class", "divFavorite")
-    // card.appendChild(divFavorite)
-
+    // Adicionando botão de favoritar e toggle entre favorito e não favorito
     let btnFav = document.createElement("img");
     btnFav.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216575.png");
     btnFav.setAttribute("class", "favorite");
-    btnFav.setAttribute("id","btnFav")
+    btnFav.setAttribute("id", "btnFav")
     card.appendChild(btnFav);
+    // let favoritesList = [];
     btnFav.onclick = function () {
       if (btnFav.classList.contains("favorite")) {
-        btnFav.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216649.png")
-        btnFav.setAttribute("class","favorite2")
+        btnFav.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216649.png");
+        btnFav.setAttribute("class", "favorite2");
+        card.setAttribute("class", "card");
       } else {
-        btnFav.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216575.png")
-        btnFav.setAttribute("class","favorite")
-    }
+        btnFav.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216575.png");
+        btnFav.setAttribute("class", "favorite");
+        card.setAttribute("class", "card notFavCard");
+      }
     }
 
-    card.addEventListener("mouseover", function() {
+    // Evento mouseover para aparecer o botão de deletar o card
+    card.addEventListener("mouseover", function () {
       divBtnDeletePic.style.display = "block";
     })
-    card.addEventListener("mouseout", function() {
+    card.addEventListener("mouseout", function () {
       divBtnDeletePic.style.display = "none";
     })
 
     titleForm.focus();
 
-    titleForm.value = "Filhote de Labrador";
-    pictureForm.value = "https://i.ytimg.com/vi/MPV2METPeJU/maxresdefault.jpg";
-    descriptionForm.value = "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident facere, iure laborum impedit rem tempore cum?";
 
-    // document.querySelectorAll("input").forEach((item) => item.value = "");
+    document.querySelectorAll("input").forEach((item) => item.value = "");
+
+    // Toggle e função para o botão de Favoritos
+    let favoriteIcon = document.querySelector(".favoriteIcon")
+
+    btnFavoriteIcon.onclick = function () {
+
+      if (favoriteIcon.classList.contains("favoriteIcon")) {
+        favoriteIcon.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216649.png");
+        favoriteIcon.setAttribute("class", "favoriteIcon2");
+      } else {
+        favoriteIcon.setAttribute("src", "https://image.flaticon.com/icons/png/512/1216/1216575.png");
+        favoriteIcon.setAttribute("class", "favoriteIcon");
+      }
+
+
+      let favoriteList = document.querySelectorAll(".notFavCard")
+      favoriteList.forEach((item) => {
+        if (item.style.display == "inline-block") {
+          item.style.display = "none"
+        } else {
+          item.style.display = "inline-block"
+        }
+      })
+
+
+    }
   }
-})
+}
+)
 
-
-btnOpenContact.onclick = function() {
+// Função para o form Entre em Contato
+btnOpenContact.onclick = function () {
   if (extraDivContact.style.display == "none") {
     extraDivContact.style.display = "block";
   } else {
@@ -147,7 +180,8 @@ btnOpenContact.onclick = function() {
   }
 }
 
-btnOpenTeam.onclick = function() {
+// Função para o form Equipe
+btnOpenTeam.onclick = function () {
   if (extraDivTeam.style.display == "none") {
     extraDivTeam.style.display = "block";
   } else {
@@ -155,7 +189,7 @@ btnOpenTeam.onclick = function() {
   }
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == extraDivFormImgs) {
     extraDivFormImgs.style.display = "none";
   } if (event.target == extraDivContact) {
